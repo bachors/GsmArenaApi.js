@@ -1,0 +1,29 @@
+Query: 
+<input type="text" id="query" value="Zenfone">
+Param: 
+<select id="param">
+	<option value="search" onclick="demo()">Search</option>
+	<option value="detail" onclick="demo()">Detail</option>
+</select>
+<input type="submit" id="go" value="Go" onclick="run()">
+<hr>
+Log:
+<pre id="result"></pre>
+
+<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="//bachors.github.io/src/GsmArenaApi.js"></script>
+<script>
+function run(){
+	var data = {
+		param: document.getElementById('param').value,
+		query: document.getElementById('query').value
+	}
+	GsmArenaApi(data, function(result) {
+		// console.log(result);
+		document.querySelector('#result').innerHTML = JSON.stringify(result, null, 2);
+	});
+}
+function demo(){
+	document.getElementById('query').value = (document.getElementById('param').value == 'search' ? 'Zenfone' : 'oppo_f3_plus-8613');
+}
+</script>
