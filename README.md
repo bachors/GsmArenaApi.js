@@ -1,0 +1,2 @@
+# GsmArenaApi.js
+Hybrid
