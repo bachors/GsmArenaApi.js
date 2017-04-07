@@ -6,7 +6,7 @@
  * query: 'keyword'
  
  * param: 'detail'
- * param: 'slug'
+ * query: 'slug'
  *******************************/
 
 var GsmArenaApi = function(data, callback) {
@@ -30,7 +30,6 @@ var GsmArenaApi = function(data, callback) {
 	}
 	
 	function search(query) {
-        var d = '';
         $.ajax({
             url: 'https://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('SELECT content FROM data.headers WHERE url="http://www.gsmarena.com/results.php3?sQuickSearch=yes&sName=' + query + '" and ua="Googlebot/2.1 (http://www.googlebot.com/bot.html)"') + '&format=xml&env=store://datatables.org/alltableswithkeys'
         }).done(function(html) {
@@ -50,7 +49,6 @@ var GsmArenaApi = function(data, callback) {
 	}
 	
 	function detail(query) {
-        var d = '';
         $.ajax({
             url: 'https://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('SELECT content FROM data.headers WHERE url="http://www.gsmarena.com/' + query.replace(/\_and\_/gi, '&').replace(/\_tambah\_/gi, '+') + '.php' + '" and ua="Googlebot/2.1 (http://www.googlebot.com/bot.html)"') + '&format=xml&env=store://datatables.org/alltableswithkeys'
         }).done(function(html) {
